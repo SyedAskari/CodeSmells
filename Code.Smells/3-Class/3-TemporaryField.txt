@@ -1,0 +1,6 @@
+﻿SMELL : TEMPORARY FIELD
+TYPE  : OBJECT-ORIENTATION ABUSER
+
+DEFINITION
+Class has a field that is only set in certain situations,often used to
+pass state between methods instead of using parameters.

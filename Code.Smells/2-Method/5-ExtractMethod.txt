@@ -1,0 +1,10 @@
+﻿1. Identitfy the code to extract
+2. Create a new method with a good name
+3. Copy the code from the source to the new method
+    - Temporary variables used only in this code can be copied over as well
+4. Identitfy modified local variables
+    - Does the extracted method need to return a variable?
+    - If more than one,consider extracting a smaller method
+5. Compile
+6. Replace extracted code with call to new method
+7. Compile and Run Tests

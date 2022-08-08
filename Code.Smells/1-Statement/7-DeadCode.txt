@@ -1,0 +1,9 @@
+﻿SMELL : DEAD CODE
+TYPE  : DISPOSABLE
+
+DEFINITION
+Useless code that is never executed.
+
+SOLUTION
+Get rid of useless code, it's not adding value
+it's only adding weight to the codebase.

@@ -1,0 +1,7 @@
+﻿Smell : Conditional Complexity
+TYPE  : CHANGE PREVENTER
+
+DEFINITION
+Methods should operate at a consistent abstraction level.
+Don't mix high level and low level behavior in the same
+method.

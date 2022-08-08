@@ -1,0 +1,47 @@
+﻿SMELL : HIDDEN TEMPORAL COUPLING
+TYPE  : COUPLER
+
+DEFINITION
+Certain operations must be called in a certain sequence,
+or they won't work. Nothing in the design forces this behavior -developers
+just have to figure it out from context or tribal knowledge.
+
+
+SOLUTION
+One common way to refactor code that exhibits this smell
+is to use the template method design pattern.
+
+
+ANALYSIS
+
+PrepareCrust();
+AddToppings();
+Bake();
+CutIntoSlices();
+
+If we perform these steps in a wrong order the result
+will b incorrect. This is an ideal candidate for the template
+method pattern, which takes the sequence of operations ans uses it 
+as a template that one or more classes can implement.
+The individual steps can vary but the sequence of them cannot
+and they must all be called.
+
+
+Another option is to tie the process together through a series
+of classes that each  depends on the previous one. This increases
+the complexity of the code to some extent, but ensures that the
+programmer must perform the steps in the proper sequence.
+Robert c Martin calls this forming a bucket brigade beacuse 
+each small class does a single step before handling the 
+strongly-typed result off to the next small class, which only
+can work with that particular incoming type. SInce each result
+is strongly typed and unique there is no reasonable way to call
+these methods out of order. This approach can be used as an
+alternative to the template method pattern for dealing with
+temporal coupling.
+
+
+Crust crust = PrepareCrust();
+ToppedCrust toppedCrust = AddToppings(crust);
+BakedItem bakedItem = Bake(toppedCrust);
+SlicedItem slicedItem = CutIntoSlices(bakedItem);

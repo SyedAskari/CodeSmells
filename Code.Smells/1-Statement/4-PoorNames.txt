@@ -1,0 +1,20 @@
+﻿SMELL : POOR NAMES
+TYPE  : OBFUSCATOR
+
+DEFINITION
+Naming things has often been cited as one of the hardest 
+problems in computer science. Use descriptive names and 
+avoid abbreviations and encodings where possible.
+The more long lived a particular variable is,
+the more descriptive your name for it needs to be.
+
+SOLUTION
+Descriptive
+Appropriate abstraction level
+Follow standards
+Unambiguous
+Longer names for longer scopes
+Don't encode or abbreviate
+
+EXTRAS
+https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions

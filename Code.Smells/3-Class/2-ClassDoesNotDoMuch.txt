@@ -1,0 +1,13 @@
+﻿SMELL : LARGE CLASS
+TYPE  : BLOATER
+
+DEFINITION
+Sometimes after refactoring or redesign a class is left without
+much to do.If whatever it does makes more sense somewhere
+else,pull it out and delete the class.
+
+SMELL : LAZY CLASS
+TYPE  : DISPENSABLE
+
+DEFINITION
+A class that does not do enough to justify its existence.

@@ -1,0 +1,23 @@
+﻿SMELL : PRIMITIVE OBESSION
+TYPE  : BLOATER
+
+DEFINITION
+Overuse of primitives, instead of better abstractions or
+data structures, results in excess code required to enforce
+constraints.
+
+SOLUTION
+Introduce named variables
+Use named arguments
+Replace primitive with constants for revealing name 
+Replace primitive with enum/SmartEnum if you have more than few options
+ 
+ANALYSIS
+Part of problem also lies with the method signature that
+relies on primitives AddHolidays or DateTime.
+In later examples we will look at how to solve this issue.
+
+EXTRAS
+Using constants approach
+https://ardalis.com/group-your-constants-and-enums/
+Ardalis Smart enums nuget package

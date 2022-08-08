@@ -1,0 +1,27 @@
+﻿SMELL : LONG METHOD
+TYPE  : BLOATER
+
+DEFINITION
+Prefer shorter methods to longer methods.Small methods can
+have better names,because they're doing less,and since they can
+be well-named,are small,and don't do much,they're easier than
+long methods to understand.
+
+
+ANALYSIS
+
+Small methods
+Methods should fit on one screen (no scrolling)
+Ideally fewer than 10 lines of code.
+Easier to write test for.
+
+Refactoring long methods
+1. Extract Method. Sometimes a comment on top of some lines of code is a code name for an extracted method.
+2. Compose Method. The compose method refactoring turns a long method into a high-level method that delegates to
+   several other lower-level methods to do the detail work. TemplateMethod is an example of a composed method.
+   If you have a very detailed long method with many steps, you can extract method on each step until only the
+   high-level workflow remains in the original composed method.
+3. Replace nested conditional with guard clause.
+4. Replace conditional dispatcher with command using command design pattern.
+5. Move accumulation to visitor using visitor design pattern.
+6. Replace conditional logic with strategy using strategy design pattern.

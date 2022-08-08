@@ -1,0 +1,10 @@
+﻿SMELL : ALTERNATIVE CLASSES WITH DIFFERENT INTERFACES
+TYPE  : OBJECT-ORIENTATION ABUSER
+
+DEFINITION
+Common operations should share common semantics, such as names, parameters, and parameter orders.
+
+SOLUTION
+Use consistent method parameters for example
+Class A SendEmail(to,from,subject,body)
+Class B SendEmail(from,to,subject,body) --> don't do that

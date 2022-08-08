@@ -1,0 +1,9 @@
+﻿SMELL : VERTICAL SEPERATION
+TYPE  : OBFUSCATOR
+
+DEFINITION
+Define,assign and use variables and functions near where they are used.
+Define local variables where first used, ideally as they are assigned.
+Define private functions just below their first use.
+Avoid forcing the reader to scroll. Try to avoid too much
+vertical seperation.

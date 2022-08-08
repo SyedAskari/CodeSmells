@@ -1,0 +1,48 @@
+﻿SMELL : DUPLICATED CODE
+TYPE  : DISPOSABLE
+
+DEFINITION
+Duplication is the root of all software evil. Follow
+the DRY principle and avoid repetition in your code when
+possible.
+
+SOLUTION
+Use DRY by extracting a method, or use an extention method.
+If it is something very common put it in a shared package.
+
+ANALYSIS
+
+If we later change the constructor of the
+class such that it no longer has
+a default constructor. We will have to
+modify it everywhere.
+
+public class BasketAddItem
+{
+    [Fact]
+    public void AddsBasketItemIfNotPresent()
+    {       
+        var basket=new Basket();
+    }
+    [Fact]
+    public void IncrementsItemQuantityIfPresent()
+   {
+        var basket=new Basket();
+   }
+}
+
+
+public class BasketAddItem
+{
+   private Basket _basket=new Basket();
+   [Fact]
+   public void AddsBasketItemIfNotPresent()
+   {
+        _basket
+   }
+   [Fact]
+   public void IncrementsItemQuantityIfPresent()
+   {
+       _basket
+   }
+}

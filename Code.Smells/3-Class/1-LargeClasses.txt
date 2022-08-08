@@ -1,0 +1,14 @@
+﻿SMELL : LARGE CLASS
+TYPE  : BLOATER
+
+DEFINITION
+A large class probably has too many responsibilities and can be
+split into two or more smaller,more focused and cohesive classes.
+
+SOLUTION
+Extract method.
+Extract class.
+Extract subclass or interface.
+Replace conditional dispatcher with command using command design pattern.
+Replace state-altering conditionals with state design pattern.
+Replace implicit language with interpreter design pattern.

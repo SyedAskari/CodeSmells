@@ -1,0 +1,7 @@
+﻿Smell : Obscured Intent
+TYPE  : OBFUSCATOR
+
+DEFINITION
+Small and dense are not ends in and of themselves!Take
+the time to ensure your code is intention-revealing,not
+obscuring.

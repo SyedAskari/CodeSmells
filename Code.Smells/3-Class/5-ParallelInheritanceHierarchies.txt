@@ -1,0 +1,17 @@
+﻿SMELL : PARALLEL INHERITANCE HERARCHIES
+TYPE  : CHANGE PREVENTER
+
+DEFINITION
+Two concepts are both modeled with inheritance hierarchies, and any change in one
+requires a matching change in the other.
+
+SOLUTION
+Keep one hierarchy and the methods from the other hierarchy that currently are handled by
+specific subclasses to be collapsed up into methods in a single class perhaps with 
+each method prefixed as appropriate to the service that it's going to work with.
+Using this approach a new method may still need to be created with each new child of
+shipping service but at least all the methods are confined to a single class.
+This approach make sense when there are very few child classes and only one or two 
+methods in the reference classes that need to be collapsed into one class.
+If parallel hierarchies are not causing you pain, and you are not added stuff all the time
+it is better to keep them from SOLID point of view, rather than adding them to a single class.

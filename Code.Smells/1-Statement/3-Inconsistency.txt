@@ -1,0 +1,5 @@
+﻿SMELL : INCONSISTENCY
+TYPE  : OBFUSCATOR
+
+DEFINITION
+Be consistent in your naming, formatting and usage patterns within your application.

@@ -1,0 +1,59 @@
+﻿SMELL : SWITCH STATEMENTS
+TYPE  : OBJECT-ORIENTATION ABUSER
+
+DEFINITION
+Switch statements, and complex if-else chains, may indicate
+a lack of proper use of object-oriented design.
+
+SOLUTION
+Replace conditions with Polymorphism.
+
+ANALYSIS
+The main problem with switch statement is duplication. A single
+switch statement is fine, but when there are many switch statements
+with same logic in more than one location in the code, then when
+a new case is added and if existing cases behavior must change then
+every switch must be located and modified. This violates the DRY
+principle.
+The second issue with switch statements is that they often indicate 
+a lack of encapsulation. Switch statements frequently deal with 
+status or flag variables on objects reaching into the object, 
+seeing this internal data about what type of thing it represents, 
+and then modifying the program's behavior accordingly. 
+This violates the tell, don't ask principle.
+A more object-oriented approach would be to encapsulate 
+the behavior into the object in question moving the
+logic into a new method that is part of this object.
+Polymorphism, or the ability to treat a child object as if it
+were its parent, is a key component of OO design. By moving 
+behavior into objects, you can eliminate switch statements and
+simply call the objects method to achieve that result. At runtime, 
+differences that might have been represented by different cases within 
+a switch statement can now be represented by different classes that 
+each inherit from a common base.
+
+
+MethodOneInSomeClass(Class class)
+{
+   switch(class.TypeId)
+  {
+     case1:
+         case2:
+         casen:
+  }
+}
+
+It's when you duplicate them that it'sacode smell.
+
+Why does class have a type property? Could it use Inheritance to be that type?
+
+AnotherMethodInSomeClass(Class class)
+{
+   switch(class.TypeId)
+  {
+     case1:
+         case2:
+         casen:
+  }
+}
+

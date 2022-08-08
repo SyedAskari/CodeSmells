@@ -1,0 +1,12 @@
+﻿Smell : Conditional Complexity
+TYPE  : CHANGE PREVENTER
+
+DEFINITION
+Methods should limit the amount of conditional complexity they
+contain.The number of unique logical paths through a method can
+be measured as Cyclomatic Complexity,which should be kept
+under 10.
+
+EXTRAS
+https://github.com/ardalis/kata-catalog
+https://ardalis.com/measuring-aggregate-complexity-in-software-applications/
