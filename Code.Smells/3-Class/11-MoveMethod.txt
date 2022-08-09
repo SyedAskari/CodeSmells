@@ -1,0 +1,19 @@
+EXPLANATION
+
+Martin Fowler writes moving methods is the bread and butter of refactoring. You can use the move 
+method refactoring when you find that a method doesn't belong in its current class, but is better 
+suited to another. It's more often needed as part of a larger refactoring. Often, you can tell a 
+method should move because it references some other object more than it does the object in which 
+it's defined. To move a method from one class to another, first, examine the features used by the 
+method in the source class and consider whether it makes sense to move some or all of them to the 
+new location. Be sure to check sum and super-classes for other declarations of the method. These 
+could prevent you from moving the method. Next, declare the method on the target class and copy 
+the contents of the source method into the new one. Adjust it to make it work in its new home. 
+If the method needs to reference its source object and there is no way for it to do so from the 
+new object currently, pass a reference to the source object as a parameter to the new object. 
+Now compile to make sure things basically work and then determine how to reference the target 
+object from the source. Next, add code that delegates from the source method to the new one. 
+It'll probably be just a single line of code that calls your method in its new class location. 
+Now compile and run your tests. And then finally, decide whether it makes sense to keep the 
+original method as a delegating method. If not, go ahead and delete it and then replace 
+anything that's referencing it with references to the method in the new class.

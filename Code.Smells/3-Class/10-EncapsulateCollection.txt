@@ -1,0 +1,23 @@
+EXPLANATION
+
+Unlike public fields, which I rarely see, public collection properties are a pandemic.
+Most organizations seem to use them and fortunately, EF Core now makes it fairly easy to 
+encapsulate them properly and still have them work correctly with persistence. The main 
+reason to avoid exposing collections directly is that they provide clients with too much 
+control over your entity's internal data. When you expose a list, for instance, any code 
+that works with an instance of your class can add, remove, or clear that list even if you lock 
+down the set method. If you don't lock down the set method, they could even just replace the 
+collection entirely or just set it to null. This, in turn, means that nowhere in your code can 
+you trust that the collection is in a valid state. To encapsulate a collection, follow these steps. 
+First, add explicit methods to the class for adding and removing items if needed. Be sure to initialize 
+the collection field to be an empty collection. You need a separate property and backing field to 
+properly encapsulate the collection. Go ahead and compile and then find all references that directly 
+set the collection. Modify these so that instead they perform their actions through the add/remove 
+methods that you added. Compile and run your tests after each one of these changes. Now find any 
+references that get the collection and then modify its contents directly. This will include anything 
+that modifies the collection directly off the entity, for instance by calling entity.Items .Add. 
+You want to replace that with entity.AddItem. Change these to use your add and remove methods that 
+you've explicitly created. Now compile and run your tests again. Finally, modify the property so 
+that its getter returns a read-only collection and then compile and test one more time. Everything 
+should work at this point. And now, you've protected access to that collection so that the
+only thing that can directly modify it is the class itself that owns that data. 

@@ -1,0 +1,17 @@
+EXPLANATION
+
+Another class level of refactoring is Extract Class. If you find that you have a 
+class with too many responsibilities, Extract Class is usually the best way to address 
+the problem. Sometimes classes started out small, but over time they grew, and although 
+initially everything seemed appropriate, it's now clear that the class is too large and 
+needs to be split. Often you'll notice that some of the data and some of the methods in 
+that class seem to go together, which can guide you as you consider where to split the 
+current class's responsibilities from the ones that you're going to extract. To begin the 
+Extract Class refactoring, you need to determine what responsibilities the class has and which 
+of these you'll be extracting into a new class. Then, create the new class, giving it a name that 
+fits the responsibility that it will have. Make a link from the old class to the new one, such as 
+through a field, prefer a one‑way link if possible, but if necessary, you can also create a link 
+from the new class back to the original one as well. Now use Move Method and Move Field if necessary 
+to move the fields and methods from the old to the new class. Compile and run your tests after each move. 
+When you're done, decide whether you need to keep a reference to the new class as part of the public 
+interface of the original class or if clients can just refer to this new class directly

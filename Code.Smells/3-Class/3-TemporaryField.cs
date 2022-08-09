@@ -32,7 +32,8 @@
             return _employee.YearToDateEarnings() + _employee.OvertimeEarnings() * 2;
         }
     }
-    internal class Employee
+
+    public class Employee
     {
         public int YearToDateEarnings()
         {

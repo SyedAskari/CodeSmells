@@ -1,0 +1,26 @@
+SMELL : HIDDEN DEPENDENCIES
+TYPE  : COUPLER
+
+DEFINITION
+Classes have external dependencies they do not specify through their constructors.
+Calling code must inspect the class (or discover runtime errors) to identify dependencies.
+Instead follow the Explicit Dependencies Principle. 
+
+SOLUTION
+In a well-designed system, classes should identify and declare their dependencies in their constructors.
+This last code smell we're going to show is the hidden dependencies smell. Hidden dependencies represent
+anything the class depends upon, but does not expose via its constructor or through a parameter on a method.
+These dependencies violate the explicit dependencies principle, which states that methods and classes should
+explicitly require, typically through parameters, any collaborating objects they need in order to function
+correctly. These dependencies can take the form of direct object instantiation or calls to non-stateless
+static methods. Remember, anytime you use the new keyword to create a class, you are creating a dependency
+on that particular class instance. It's often better to depend on an interface as the dependency inversion
+principle suggests. You can remember new is glue when you're writing your code. Think about whether you really 
+want the code you're working on to be glued to that particular class that you're instantiating. To refactor
+away hidden dependencies, the first step is to replace the static or newly instantiated variable with a 
+method parameter or perhaps a field. If many methods on the class all use this dependency, then you can 
+move the local variable up to a field and set the field in the class' constructor. Frequently, as part of this 
+process, you'll also apply extract interface on the object so that there is less of a dependency on a particular 
+type, and instead, you can just depend on an abstraction in the form of the new interface that you create.
+This overall process is frequently called dependency injection as we are going to inject the class' dependencies
+into it through its constructor.

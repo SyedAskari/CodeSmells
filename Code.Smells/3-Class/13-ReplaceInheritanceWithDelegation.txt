@@ -1,0 +1,19 @@
+EXPLANATION
+
+The next class refactoring is to replace inheritance with delegation. 
+You may find after you've chosen to inherit from a class that many of its 
+operations aren't applicable to the subclass. Maybe the relationship is 
+violating the list of substitution principle. You may be able to live with the 
+situation and have some conventions or comments in your code indicating which parts 
+of the superclass you're actually using and which ones aren't appropriate, but this 
+approach results in code that says one thing while your intent is another. By using 
+delegation instead, you make your intent more clear. You can be specific about which 
+aspects of the interface you wish to use and which you wish to ignore. The price you pay 
+is writing methods that simply delegate to another class, and while these are boring to 
+write, they should be so simple that they are hard to mess up. To perform this refactoring, 
+first, create and initialize a field in the subclass that has the type of the superclass. 
+Change each method defined in the subclass to use this new field and then compile and run 
+your tests. Now remove the subclass declaration, you no longer need it. For each subclass a 
+client uses, add a delegating method. We're going to be using composition over inheritance, 
+in this case. When you're finished, compile and run your tests one more time to make sure that 
+everything still works.

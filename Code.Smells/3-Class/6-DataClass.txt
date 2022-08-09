@@ -1,0 +1,37 @@
+SMELL : DATA CLASS
+TYPE  : DISPENSABLE
+
+DEFINITION
+Classes that lack behavior and have only fields and/or properties. Such
+classes lack encapsulation and must be manipulated by other classes,
+rather than building state and behavior together.
+
+SOLUTION
+- Data class Account representing an account with a bank.
+- In DDD having many such classes refers to anemic model because of the lack of business logic.
+- Data classes are fine as DTO.
+- This smell is generally only is worth acting upon when it relates to business logic classes. To address this smell
+- you can identify where other classes are working with this one, and then use extract method and move method to
+- bring the behavior into the data class itself.
+- This class will be used by dozens if not hundreds of other classes with the application or even applications.
+- InterestCalculator class works with the Account class.
+- Because Account has no behavior or responsibility of its own, the calling method in InterestCalculator must
+- inspect its fields to determine what action to take.
+- Once it does it's then able to directly manipulate those fields.
+- Such code will make it very difficult to track down how an invalid value might be set or to change the
+- overall behavior of one account type versus another within the system because the logic will be scattered 
+- throughout many other classes.
+- To correct this make the Account responsible for its own interest calculation either directly or more likely,
+- by delegating to another class.
+- We could lock down access to the account state so that the only place in which the Balance could be 
+- altered would be within the account class itself, making it much easier to to control access to this important
+- part of the system.
+- We could also create separate strategy classes to represent the behaviors of different account types like,
+- checking and savings or investment accounts.
+- RefactoredAccount class has some actual behavior in the form of CalculateAndApplyInterest. Its internal data is
+- protected against manipulation, (Balance). Balance can be modified via private method which can also log
+- access to the balance for auditing purpose.
+- RefactoredInterestCalculator class no longer modifies the account. In fact it can't do so, since it no longer
+- has access.
+- If the number of accounts increase we can modify this calculator to be polymorphic and then use a a factory
+- to create the appropriate calculator for a given account type.

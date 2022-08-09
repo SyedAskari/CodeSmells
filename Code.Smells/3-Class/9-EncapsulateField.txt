@@ -1,0 +1,27 @@
+EXPLANATION
+
+Encapsulation is an important thing to use when you're designing your classes and 
+the encapsulate field refactoring takes a field that is not encapsulated and encapsulates 
+it so that it's protected from direct access from anything that might be using the class. 
+You can use the encapsulate field refactoring anytime you have a class with a public field. 
+It should be extremely rare that you'll have a public field in a C# class. Instead, you should 
+prefer the use of C# properties. Honestly, I don't see much use of fields in my experience where 
+I help many teams write better code so I'm not going to spend too much time on this one. To do 
+this refactoring, first, create a property to access the field. You can write get and set methods 
+by hand or you can just replace the field with an auto property. Next, find everywhere that references 
+the field and replace them so that they now use property accessors. You should compile after each 
+change to make sure things are working. Once you're done, mark the field as private if you've wrapped
+it with a property accessor. If you just use an auto property you can skip this step. And then finally,
+compile once more and run all your tests. That's it. Now be careful not to go too far with your
+encapsulation efforts. You can introduce bugs when you do so for Entity Framework entities, as 
+well as for DTO types. Entity Framework and Entity Framework Core requires setters to populate 
+the state of entities retrieved from persistence. These tools can work with private setters, but 
+if completely remove the set of properties, which you can do in current versions of C#, the properties
+will never be set by EF unless you use a backing field and configure EF to use it. Another fairly 
+common issue occurs with DTOs, data transfer objects, which are often used for serialization and model 
+binding. Private setters cannot be used so you may find some parts of your objects are unexpectedly 
+null if you have a private setter. Remember, DTOs don't use encapsulation so their properties can all 
+just have public get and set methods. Likewise, you generally should not use your domain entities 
+directly as your wire protocol. They shouldn't be a part of model binding and they should not be 
+serialized and sent over the wire as part of an API. Instead, you want to map them to DTO types before 
+you serialize or model bind them in order to get best results and avoid these kinds of problems.

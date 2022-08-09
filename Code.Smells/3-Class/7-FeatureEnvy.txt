@@ -1,0 +1,29 @@
+SMELL : FEATURE ENVY
+TYPE  : COUPLER
+
+DEFINITION
+Occurs when behavior lives in one object but requires data from another.
+Related to Data class, but can also occur between two classes that each
+have their own behavior. 
+
+SOLUTION
+Feature envy is a coupling code smell that occurs when one object is 
+overly interested in another object state and implements features that 
+would be better done in the other object. This is similar to the data 
+class smell, but both objects involved in feature envy may have their 
+own behavior. You'll often identify this smell by observing a method 
+that calls several getters on another object and then performs some operation 
+on it, again violating the tell, don't ask principle. The main thing to look 
+for when deciding whether the smell needs to be addressed is whether the data 
+and the behavior will both need to change at the same time. If changes can occur 
+in one without impacting the other, then probably no action is required, but in many 
+cases, changes will need to be made to both the data and the corresponding behavior, 
+in which case, it's probably better to move them so that they are together. 
+Some design patterns, like strategy and visitor, tend to break this rule. 
+They provide a way of encapsulating behavior at the cost of a little bit of 
+indirection. Remember, code smells aren't bugs, they're just things to 
+think about when reasoning about your system's design and there are often 
+tradeoffs to be made. It may be that the value provided by the strategy or 
+the visitor pattern is worth breaking this rule. To address feature envy, 
+typically you'll want to extract and/or move the behavior so it resides 
+in the class with the data that it uses.
